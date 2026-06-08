@@ -1,10 +1,174 @@
-﻿@page
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Panel de Control";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mb-4">
+    <div class="col">
+        <div class="card-custom p-4 bg-gradient text-white d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);">
+            <div>
+                <h2 class="fw-bold mb-1">¡Bienvenido al Panel de Control!</h2>
+                <p class="mb-0 text-white-50">Sistema de Gestión Integrado - Librería Multipropósito</p>
+            </div>
+            <i class="bi bi-clock-history fs-1 opacity-50 d-none d-md-block"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4 mb-5">
+    <div class="col">
+        <div class="card card-custom card-stat h-100 p-3" style="border-left-color: var(--primary);">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted small fw-bold text-uppercase mb-1">Ventas de Hoy</h6>
+                    <h3 class="fw-bold text-dark mb-0">$42,500.00</h3>
+                </div>
+                <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-3">
+                    <i class="bi bi-cash-coin fs-3"></i>
+                </div>
+            </div>
+            <div class="mt-3 small text-muted">
+                <i class="bi bi-arrow-up text-success me-1"></i> <span class="text-success fw-bold">+12.5%</span> respecto a ayer
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-custom card-stat h-100 p-3" style="border-left-color: var(--success);">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted small fw-bold text-uppercase mb-1">Stock Bajo Alerta</h6>
+                    <h3 class="fw-bold text-dark mb-0">8 artículos</h3>
+                </div>
+                <div class="bg-danger bg-opacity-10 text-danger p-3 rounded-3">
+                    <i class="bi bi-exclamation-triangle fs-3"></i>
+                </div>
+            </div>
+            <div class="mt-3 small text-muted">
+                <span class="text-danger fw-bold">Atención requerida</span> en tecnología y útiles
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-custom card-stat h-100 p-3" style="border-left-color: var(--info);">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted small fw-bold text-uppercase mb-1">Clientes Activos</h6>
+                    <h3 class="fw-bold text-dark mb-0">142</h3>
+                </div>
+                <div class="bg-info bg-opacity-10 text-info p-3 rounded-3">
+                    <i class="bi bi-people fs-3"></i>
+                </div>
+            </div>
+            <div class="mt-3 small text-muted">
+                <i class="bi bi-person-plus text-success me-1"></i> <span class="text-success fw-bold">+4</span> esta semana
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-custom card-stat h-100 p-3" style="border-left-color: var(--warning);">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted small fw-bold text-uppercase mb-1">Proveedores Activos</h6>
+                    <h3 class="fw-bold text-dark mb-0">18</h3>
+                </div>
+                <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-3">
+                    <i class="bi bi-truck fs-3"></i>
+                </div>
+            </div>
+            <div class="mt-3 small text-muted">
+                Asociados con <span class="fw-bold">4 marcas</span> principales
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Section: Grid & Actions -->
+<div class="row g-4">
+    <!-- Recent Activity Table -->
+    <div class="col-lg-8">
+        <div class="card card-custom h-100 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h5 class="fw-bold text-dark mb-0">Últimas Operaciones</h5>
+                    <p class="text-muted small mb-0">Historial reciente de ventas y compras</p>
+                </div>
+                <span class="badge bg-light text-dark px-3 py-2 rounded-pill small">Hoy</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-custom align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Entidad / Descripción</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1024</td>
+                            <td><span class="badge bg-success bg-opacity-10 text-success">Venta</span></td>
+                            <td>Consumidor Final</td>
+                            <td>Hace 15 min</td>
+                            <td class="fw-bold">$12,400.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1023</td>
+                            <td><span class="badge bg-success bg-opacity-10 text-success">Venta</span></td>
+                            <td>Juan Pérez (Cliente)</td>
+                            <td>Hace 1 hora</td>
+                            <td class="fw-bold">$4,850.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td>#502</td>
+                            <td><span class="badge bg-danger bg-opacity-10 text-danger">Compra</span></td>
+                            <td>Distribuidora Oeste (Proveedor)</td>
+                            <td>Hace 3 horas</td>
+                            <td class="fw-bold">$78,000.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Recibido</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1022</td>
+                            <td><span class="badge bg-success bg-opacity-10 text-success">Venta</span></td>
+                            <td>María Gómez (Cliente)</td>
+                            <td>Hace 4 horas</td>
+                            <td class="fw-bold">$8,900.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Completado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-lg-4">
+        <div class="card card-custom h-100 p-4">
+            <h5 class="fw-bold text-dark mb-4">Accesos Rápidos</h5>
+            <div class="d-flex flex-column gap-3">
+                <a asp-page="/Ventas" class="btn btn-custom-primary w-100 text-start py-3 d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-cash-stack me-2"></i> Registrar Venta</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                <a asp-page="/Compras" class="btn btn-custom-secondary w-100 text-start py-3 d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-cart me-2"></i> Registrar Compra</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                <a asp-page="/Productos" class="btn btn-custom-secondary w-100 text-start py-3 d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-box-seam me-2"></i> Agregar Producto</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                <a asp-page="/Clientes" class="btn btn-custom-secondary w-100 text-start py-3 d-flex align-items-center justify-content-between">
+                    <span><i class="bi bi-person-plus me-2"></i> Registrar Cliente</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

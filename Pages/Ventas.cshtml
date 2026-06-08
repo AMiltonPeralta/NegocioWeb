@@ -1,0 +1,138 @@
+@page
+@model NegocioWeb.Pages.VentasModel
+@{
+    ViewData["Title"] = "Registro de Ventas";
+}
+
+<div class="row mb-4 align-items-center">
+    <div class="col">
+        <h2 class="fw-bold text-dark mb-1"><i class="bi bi-cash-stack me-2 text-primary"></i>Ventas</h2>
+        <p class="text-muted mb-0">Facturación de productos a clientes, control de stock y cálculo de precios con ganancias.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Sale Registration Form -->
+    <div class="col-xl-5">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-plus-circle text-primary me-2"></i>Registrar Nueva Venta</h5>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-bold">Cliente</label>
+                    <select class="form-select form-control-custom">
+                        <option value="0">Consumidor Final</option>
+                        <option value="1">Juan Pérez</option>
+                        <option value="2">María Gómez</option>
+                    </select>
+                </div>
+                
+                <!-- Product Selector Grid -->
+                <div class="border rounded-3 p-3 bg-light mb-3">
+                    <h6 class="fw-bold text-muted small mb-3">Agregar Item a la Venta</h6>
+                    <div class="mb-2">
+                        <label class="form-label small text-muted">Producto</label>
+                        <select class="form-select form-control-custom py-1.5">
+                            <option value="">Seleccione un Producto...</option>
+                            <option value="1">Cuaderno A4 Rivadavia (Stock: 30 u | Venta: $1,950.00)</option>
+                            <option value="2">Bolígrafo Azul Bic (Stock: 5 u | Venta: $280.00)</option>
+                            <option value="3">Tablero A3 Pizzini (Stock: 8 u | Venta: $16,200.00)</option>
+                        </select>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <label class="form-label small text-muted">Cantidad a Vender</label>
+                            <input type="number" class="form-control form-control-custom py-1.5" placeholder="Cant." min="1" value="2" />
+                            <span class="text-muted small" style="font-size: 0.75rem;">Disponibles: 30</span>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small text-muted">Precio Calculado ($)</label>
+                            <input type="text" class="form-control form-control-custom py-1.5 bg-white" readonly value="$1,950.00" />
+                            <span class="text-success small" style="font-size: 0.75rem;">Incluye 30% ganancia</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-custom-secondary w-100 mt-3"><i class="bi bi-plus"></i> Añadir a la venta</button>
+                </div>
+
+                <!-- Items list summary -->
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold">Detalle de Facturación</label>
+                    <ul class="list-group list-group-flush border rounded-3 bg-white" style="max-height: 150px; overflow-y: auto;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center small">
+                            <div>
+                                <span class="fw-bold">Cuaderno A4 Rivadavia</span><br/>
+                                <span class="text-muted">2 unidades x $1,950.00</span>
+                            </div>
+                            <span class="fw-bold text-dark">$3,900.00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center small">
+                            <div>
+                                <span class="fw-bold">Tablero A3 Pizzini</span><br/>
+                                <span class="text-muted">1 unidad x $16,200.00</span>
+                            </div>
+                            <span class="fw-bold text-dark">$16,200.00</span>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center mt-3 px-1">
+                        <span class="fw-bold text-dark">TOTAL FACTURA:</span>
+                        <span class="fs-4 fw-bold text-primary">$20,100.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-custom-primary w-100"><i class="bi bi-receipt me-2"></i>Facturar y Descontar Stock</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sales History Table -->
+    <div class="col-xl-7">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3">Historial de Ventas</h5>
+            <div class="table-responsive">
+                <table class="table table-custom align-middle">
+                    <thead>
+                        <tr>
+                            <th>Nº Factura</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th class="text-end">Comprobante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0001-00000015</td>
+                            <td class="fw-bold">Consumidor Final</td>
+                            <td>07/06/2026</td>
+                            <td class="fw-bold">$12,400.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Cobrado</span></td>
+                            <td class="text-end">
+                                <a asp-page="/Factura" asp-route-id="15" class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-printer"></i> Factura</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0001-00000014</td>
+                            <td class="fw-bold">Juan Pérez</td>
+                            <td>07/06/2026</td>
+                            <td class="fw-bold">$4,850.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Cobrado</span></td>
+                            <td class="text-end">
+                                <a asp-page="/Factura" asp-route-id="14" class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-printer"></i> Factura</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0001-00000013</td>
+                            <td class="fw-bold">María Gómez</td>
+                            <td>06/06/2026</td>
+                            <td class="fw-bold">$8,900.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Cobrado</span></td>
+                            <td class="text-end">
+                                <a asp-page="/Factura" asp-route-id="13" class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-printer"></i> Factura</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

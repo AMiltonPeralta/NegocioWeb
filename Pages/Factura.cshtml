@@ -1,0 +1,147 @@
+@page
+@model NegocioWeb.Pages.FacturaModel
+@{
+    ViewData["Title"] = "Factura de Venta";
+}
+
+<div class="row mb-4 no-print">
+    <div class="col">
+        <a asp-page="/Ventas" class="btn btn-custom-secondary"><i class="bi bi-arrow-left me-2"></i> Volver a Ventas</a>
+    </div>
+    <div class="col-auto">
+        <button onclick="window.print();" class="btn btn-custom-primary"><i class="bi bi-printer me-2"></i> Imprimir Factura</button>
+    </div>
+</div>
+
+<!-- Invoice Container -->
+<div class="card card-custom p-5 mx-auto shadow-lg border-0" style="max-width: 800px; background-color: #fff;">
+    <!-- Header -->
+    <div class="row pb-4 mb-4 border-bottom align-items-center">
+        <div class="col-sm-6">
+            <h1 class="fw-bold text-primary mb-1 d-flex align-items-center gap-2">
+                <i class="bi bi-shop fs-2"></i> NegocioWeb
+            </h1>
+            <p class="text-muted small mb-0">Librería & Papelería Multipropósito</p>
+            <p class="text-muted small mb-0">Av. Siempre Viva 742, CABA</p>
+            <p class="text-muted small mb-0">Tel: (011) 4567-8910</p>
+        </div>
+        
+        <!-- Center Type Box -->
+        <div class="col-sm-2 text-center d-none d-sm-block">
+            <div class="border border-3 border-dark d-inline-block px-3 py-2 fw-bold fs-2" style="border-radius: 8px;">
+                B
+            </div>
+            <p class="small text-muted mb-0 mt-1">Cód. 06</p>
+        </div>
+        
+        <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
+            <h3 class="fw-bold text-dark mb-1">FACTURA</h3>
+            <p class="fw-bold mb-1">Nº 0001-00000015</p>
+            <p class="text-muted small mb-1">Fecha: 07/06/2026</p>
+            <p class="text-muted small mb-0">CUIT: 30-76543210-9</p>
+        </div>
+    </div>
+
+    <!-- Client and Info -->
+    <div class="row mb-5">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <h6 class="fw-bold text-muted text-uppercase mb-2">Cliente:</h6>
+            <h5 class="fw-bold text-dark mb-1">Consumidor Final</h5>
+            <p class="text-muted small mb-0">CUIT/CUIL: 99-99999999-9</p>
+            <p class="text-muted small mb-0">Condición IVA: Consumidor Final</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <h6 class="fw-bold text-muted text-uppercase mb-2">Detalles del Comprobante:</h6>
+            <p class="text-muted small mb-1">Condición de Venta: <span class="fw-bold">Contado / Débito</span></p>
+            <p class="text-muted small mb-0">Operador: <span class="fw-bold">Vendedor de Turno</span></p>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive mb-5">
+        <table class="table align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th class="py-3">Cód.</th>
+                    <th class="py-3">Descripción</th>
+                    <th class="py-3 text-center">Cant.</th>
+                    <th class="py-3 text-end">P. Unitario</th>
+                    <th class="py-3 text-end">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PROD-001</td>
+                    <td class="fw-bold">Cuaderno A4 Rivadavia 84 Hojas Rayado</td>
+                    <td class="text-center">2</td>
+                    <td class="text-end">$1,950.00</td>
+                    <td class="text-end fw-bold text-dark">$3,900.00</td>
+                </tr>
+                <tr>
+                    <td>PROD-003</td>
+                    <td class="fw-bold">Tablero de Dibujo Técnico A3 Pizzini</td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">$16,200.00</td>
+                    <td class="text-end fw-bold text-dark">$16,200.00</td>
+                </tr>
+                <tr>
+                    <td>PROD-002</td>
+                    <td class="fw-bold">Bolígrafo Azul Bic Trazo Fino</td>
+                    <td class="text-center">5</td>
+                    <td class="text-end">$280.00</td>
+                    <td class="text-end fw-bold text-dark">$1,400.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Totals -->
+    <div class="row justify-content-end">
+        <div class="col-md-5">
+            <div class="border-top pt-3">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Subtotal Neto:</span>
+                    <span class="text-dark fw-bold">$21,500.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Descuento (0%):</span>
+                    <span class="text-dark fw-bold">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between border-top pt-3">
+                    <h5 class="fw-bold text-dark">TOTAL:</h5>
+                    <h4 class="fw-bold text-primary">$21,500.00</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer of Invoice -->
+    <div class="border-top pt-4 mt-5 text-center text-muted small">
+        <p class="mb-1">¡Gracias por su compra en NegocioWeb!</p>
+        <p class="mb-0">Este comprobante es una simulación para la primera etapa del TPC.</p>
+    </div>
+</div>
+
+<style>
+@@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+    .card-custom {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+    }
+    header, footer {
+        display: none !important;
+    }
+    div[style*="margin-top: 100px"] {
+        margin-top: 0 !important;
+    }
+}
+</style>

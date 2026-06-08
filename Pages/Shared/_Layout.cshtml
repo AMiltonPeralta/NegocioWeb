@@ -1,45 +1,89 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NegocioWeb</title>
-    <script type="importmap"></script>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Core Bootstrap & Site Styles -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NegocioWeb.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">NegocioWeb</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index">
+                    <i class="bi bi-shop fs-3"></i>
+                    <span>NegocioWeb</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-page="/Index"><i class="bi bi-speedometer2"></i> Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link" asp-page="/Clientes"><i class="bi bi-people"></i> Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Proveedores"><i class="bi bi-truck"></i> Proveedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Productos"><i class="bi bi-box-seam"></i> Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Categorias"><i class="bi bi-tags"></i> Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Marcas"><i class="bi bi-bookmark-star"></i> Marcas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Compras"><i class="bi bi-cart"></i> Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Ventas"><i class="bi bi-cash-stack"></i> Ventas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Usuarios"><i class="bi bi-person-gear"></i> Usuarios</a>
                         </li>
                     </ul>
+                    <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                        <a class="btn btn-custom-primary btn-sm px-4 rounded-pill" asp-page="/Login">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Ingresar
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="container-fluid px-4" style="margin-top: 100px; flex: 1;">
+        <main role="main" class="pb-5">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - NegocioWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer class="footer">
+        <div class="container-fluid px-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <span>&copy; 2026 - <strong>NegocioWeb</strong> - Librería Multipropósito</span>
+            <div class="d-flex gap-3">
+                <a asp-page="/Privacy" class="text-decoration-none text-muted">Privacidad</a>
+                <span>&middot;</span>
+                <span class="text-muted">TPC Etapa 1</span>
+            </div>
         </div>
     </footer>
 

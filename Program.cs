@@ -3,6 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+// Configuración de acceso a datos y repositorios
+builder.Services.AddSingleton<NegocioWeb.Data.ConexionDB>();
+builder.Services.AddScoped<NegocioWeb.Data.CategoriaRepository>();
+builder.Services.AddScoped<NegocioWeb.Data.MarcaRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

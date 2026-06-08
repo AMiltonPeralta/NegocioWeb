@@ -1,0 +1,150 @@
+@page
+@model NegocioWeb.Pages.ClientesModel
+@{
+    ViewData["Title"] = "Gestión de Clientes";
+}
+
+<div class="row mb-4 align-items-center">
+    <div class="col">
+        <h2 class="fw-bold text-dark mb-1"><i class="bi bi-people me-2 text-primary"></i>Clientes</h2>
+        <p class="text-muted mb-0">Listado general de clientes y administración de cuentas.</p>
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-custom-primary" data-bs-toggle="modal" data-bs-target="#clienteModal">
+            <i class="bi bi-person-plus me-2"></i> Nuevo Cliente
+        </button>
+    </div>
+</div>
+
+<!-- Search and Filters -->
+<div class="row mb-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card card-custom p-2">
+            <div class="input-group">
+                <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-0 ps-0" placeholder="Buscar por nombre, documento o teléfono..." />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3 mt-3 mt-md-0">
+        <div class="card card-custom p-2">
+            <select class="form-select border-0 bg-transparent">
+                <option value="todos">Todos los Estados</option>
+                <option value="activos">Activos</option>
+                <option value="inactivos">Inactivos</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Clients Table -->
+<div class="card card-custom p-4">
+    <div class="table-responsive">
+        <table class="table table-custom align-middle">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Estado</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="fw-bold">Juan Pérez</td>
+                    <td>20-35489621-9</td>
+                    <td>011-4567-8910</td>
+                    <td>juan.perez@email.com</td>
+                    <td><span class="badge badge-custom badge-custom-success">Activo</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-light btn-sm text-primary rounded-pill px-3 me-2" title="Editar"><i class="bi bi-pencil"></i> Editar</button>
+                        <button class="btn btn-light btn-sm text-danger rounded-pill px-3" title="Desactivar"><i class="bi bi-trash"></i> Desactivar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="fw-bold">María Gómez</td>
+                    <td>27-38951234-5</td>
+                    <td>011-5432-1098</td>
+                    <td>maria.gomez@email.com</td>
+                    <td><span class="badge badge-custom badge-custom-success">Activo</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-light btn-sm text-primary rounded-pill px-3 me-2" title="Editar"><i class="bi bi-pencil"></i> Editar</button>
+                        <button class="btn btn-light btn-sm text-danger rounded-pill px-3" title="Desactivar"><i class="bi bi-trash"></i> Desactivar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="fw-bold">Carlos Rodríguez</td>
+                    <td>20-28147258-3</td>
+                    <td>0341-987-6543</td>
+                    <td>carlos.rod@email.com</td>
+                    <td><span class="badge badge-custom badge-custom-danger">Inactivo</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-light btn-sm text-primary rounded-pill px-3 me-2" title="Editar"><i class="bi bi-pencil"></i> Editar</button>
+                        <button class="btn btn-light btn-sm text-success rounded-pill px-3" title="Activar"><i class="bi bi-check-circle"></i> Activar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="fw-bold">Ana Martínez</td>
+                    <td>27-41025896-1</td>
+                    <td>0261-123-4567</td>
+                    <td>ana.mtz@email.com</td>
+                    <td><span class="badge badge-custom badge-custom-success">Activo</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-light btn-sm text-primary rounded-pill px-3 me-2" title="Editar"><i class="bi bi-pencil"></i> Editar</button>
+                        <button class="btn btn-light btn-sm text-danger rounded-pill px-3" title="Desactivar"><i class="bi bi-trash"></i> Desactivar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Dialog -->
+<div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-header text-white rounded-top-4 py-3" style="background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);">
+                <h5 class="modal-title fw-bold" id="clienteModalLabel"><i class="bi bi-person-plus me-2"></i>Nuevo Cliente</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Nombre Completo</label>
+                        <input type="text" class="form-control form-control-custom" placeholder="Ej. Juan Pérez" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Documento (CUIT/CUIL/DNI)</label>
+                        <input type="text" class="form-control form-control-custom" placeholder="Ej. 20-35489621-9" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Teléfono</label>
+                        <input type="text" class="form-control form-control-custom" placeholder="Ej. 011-4567-8910" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Correo electrónico</label>
+                        <input type="email" class="form-control form-control-custom" placeholder="Ej. juan@ejemplo.com" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Estado</label>
+                        <div class="form-check form-switch mt-1">
+                            <input class="form-check-input" type="checkbox" role="switch" id="clienteActivo" checked>
+                            <label class="form-check-label text-muted small" for="clienteActivo">Cliente Activo</label>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-end mt-4">
+                        <button type="button" class="btn btn-custom-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-custom-primary" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

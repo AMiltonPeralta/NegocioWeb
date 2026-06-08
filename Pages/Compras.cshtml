@@ -1,0 +1,137 @@
+@page
+@model NegocioWeb.Pages.ComprasModel
+@{
+    ViewData["Title"] = "Registro de Compras";
+}
+
+<div class="row mb-4 align-items-center">
+    <div class="col">
+        <h2 class="fw-bold text-dark mb-1"><i class="bi bi-cart me-2 text-primary"></i>Compras</h2>
+        <p class="text-muted mb-0">Gestión de abastecimiento, registro de compras y control de facturas de proveedores.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Purchase Registration Form -->
+    <div class="col-xl-5">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-plus-circle text-primary me-2"></i>Registrar Nueva Compra</h5>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-bold">Proveedor</label>
+                    <select class="form-select form-control-custom">
+                        <option value="">Seleccione un Proveedor...</option>
+                        <option value="1">Distribuidora Ledesma</option>
+                        <option value="2">Papelera San Martín</option>
+                        <option value="4">Pizzini Mayorista</option>
+                    </select>
+                </div>
+                
+                <!-- Product Selector Grid -->
+                <div class="border rounded-3 p-3 bg-light mb-3">
+                    <h6 class="fw-bold text-muted small mb-3">Agregar Item a la Compra</h6>
+                    <div class="mb-2">
+                        <label class="form-label small text-muted">Producto</label>
+                        <select class="form-select form-control-custom py-1.5">
+                            <option value="">Seleccione un Producto...</option>
+                            <option value="1">Cuaderno A4 84 Hojas ($1,500.00)</option>
+                            <option value="2">Bolígrafo Azul Bic ($200.00)</option>
+                            <option value="3">Tablero A3 Pizzini ($12,000.00)</option>
+                        </select>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <label class="form-label small text-muted">Cantidad</label>
+                            <input type="number" class="form-control form-control-custom py-1.5" placeholder="Cant." min="1" value="10" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small text-muted">Costo Unitario ($)</label>
+                            <input type="number" class="form-control form-control-custom py-1.5" placeholder="Precio Compra" min="0" value="1500" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-custom-secondary w-100 mt-3"><i class="bi bi-plus"></i> Añadir a la lista</button>
+                </div>
+
+                <!-- Items list summary -->
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold">Items de la Compra</label>
+                    <ul class="list-group list-group-flush border rounded-3 bg-white" style="max-height: 150px; overflow-y: auto;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center small">
+                            <div>
+                                <span class="fw-bold">Cuaderno A4 84 Hojas</span><br/>
+                                <span class="text-muted">20 unidades x $1,500.00</span>
+                            </div>
+                            <span class="fw-bold text-dark">$30,000.00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center small">
+                            <div>
+                                <span class="fw-bold">Bolígrafo Azul Bic</span><br/>
+                                <span class="text-muted">50 unidades x $200.00</span>
+                            </div>
+                            <span class="fw-bold text-dark">$10,000.00</span>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center mt-3 px-1">
+                        <span class="fw-bold text-dark">TOTAL ESTIMADO:</span>
+                        <span class="fs-4 fw-bold text-primary">$40,000.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-custom-primary w-100"><i class="bi bi-cart-plus me-2"></i>Guardar Compra e Incrementar Stock</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Purchases History Table -->
+    <div class="col-xl-7">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3">Historial de Compras</h5>
+            <div class="table-responsive">
+                <table class="table table-custom align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID Compra</th>
+                            <th>Proveedor</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th class="text-end">Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#502</td>
+                            <td class="fw-bold">Distribuidora Ledesma</td>
+                            <td>07/06/2026</td>
+                            <td class="fw-bold">$78,000.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Recibido</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-eye"></i> Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#501</td>
+                            <td class="fw-bold">Papelera San Martín</td>
+                            <td>03/06/2026</td>
+                            <td class="fw-bold">$125,500.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Recibido</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-eye"></i> Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#500</td>
+                            <td class="fw-bold">Pizzini Mayorista</td>
+                            <td>28/05/2026</td>
+                            <td class="fw-bold">$45,000.00</td>
+                            <td><span class="badge badge-custom badge-custom-success">Recibido</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-light btn-sm rounded-pill px-3"><i class="bi bi-eye"></i> Ver</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

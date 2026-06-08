@@ -1,0 +1,84 @@
+@page
+@model NegocioWeb.Pages.MarcasModel
+@{
+    ViewData["Title"] = "Gestión de Marcas";
+}
+
+<div class="row mb-4 align-items-center">
+    <div class="col">
+        <h2 class="fw-bold text-dark mb-1"><i class="bi bi-bookmark-star me-2 text-primary"></i>Marcas</h2>
+        <p class="text-muted mb-0">Administración de marcas de los productos en catálogo.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Form (Add/Edit Brand) -->
+    <div class="col-lg-4">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-plus-circle text-primary me-2"></i>Nueva Marca</h5>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-bold">Nombre de la Marca</label>
+                    <input type="text" class="form-control form-control-custom" placeholder="Ej. Rivadavia" required />
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold">Estado</label>
+                    <div class="form-check form-switch mt-1">
+                        <input class="form-check-input" type="checkbox" role="switch" id="marcaActiva" checked>
+                        <label class="form-check-label text-muted small" for="marcaActiva">Marca Activa</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-custom-primary w-100"><i class="bi bi-save me-2"></i>Guardar Marca</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table of Brands -->
+    <div class="col-lg-8">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold text-dark mb-3">Listado de Marcas</h5>
+            <div class="table-responsive">
+                <table class="table table-custom align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th class="text-end">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var marca in Model.Marcas)
+                        {
+                            <tr>
+                                <td>@marca.Id</td>
+                                <td class="fw-bold">@marca.Nombre</td>
+                                <td>
+                                    @if (marca.Activo)
+                                    {
+                                        <span class="badge badge-custom badge-custom-success">Activa</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-custom badge-custom-danger">Inactiva</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <button class="btn btn-light btn-sm text-primary rounded-pill px-3 me-2"><i class="bi bi-pencil"></i> Editar</button>
+                                    @if (marca.Activo)
+                                    {
+                                        <button class="btn btn-light btn-sm text-danger rounded-pill px-3"><i class="bi bi-trash"></i> Desactivar</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-light btn-sm text-success rounded-pill px-3"><i class="bi bi-check-circle"></i> Activar</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
